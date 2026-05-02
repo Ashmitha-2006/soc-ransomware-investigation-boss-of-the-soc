@@ -37,7 +37,22 @@ After interviewing Bob, Alice discovers he had found a **USB drive in the parkin
 
 Alice begins a full **SIEM-based forensic investigation** using Splunk to reconstruct the entire attack chain.
 
----
+## 🧠 Executive Summary
+
+This investigation analyzes a ransomware attack (Cerber) using Splunk SIEM.
+
+Key findings:
+- Initial infection originated from a malicious VBScript execution
+- Suspicious domain communication observed from host WE8105DESK
+- Lateral movement detected via Windows file share activity
+- 257 PDF files encrypted on remote server
+
+The attack demonstrates a full ransomware lifecycle including initial access, execution, and impact.
+
+Tools Used:
+- Splunk Enterprise
+- Windows Event Logs
+- SIEM correlation techniques
 
 ## 🖥️ Environment & Infrastructure
 
@@ -114,7 +129,7 @@ Filtered all Splunk events by the known hostname `we8105desk` and grouped result
 | ![Q1 Methodology](q1_methodology.png) | `src_ip` stats showing `192.168.250.100` dominating with 23,929 events |
 | ![Q1 Answer](q1_answer.png) | BOTS #200 — Confirmed correct (100/100 pts) |
 
----
+
 
 ### Q2 | #201 — Which Suricata signature alerted the fewest times? (7-digit ID)
 
@@ -501,7 +516,20 @@ index=botsv1 src=192.168.250.100 sourcetype="stream:http" http_method=GET
 
 7. **Shannon entropy reveals C2 domains** — Algorithmically generated domains like `cerberhhyed5frqa.xmfir0.win` have abnormally high entropy. Adding Shannon entropy analysis to DNS hunting playbooks surfaces these immediately.
 
----
+## 📚 Key Learnings
+
+- Importance of correlating logs across multiple sources
+- Windows Event Logs are critical for detecting ransomware activity
+- SIEM tools help identify patterns not visible in raw traffic
+- Detection requires both technical and analytical thinking
+
+  ## 🛡️ Detection & Prevention
+
+- Monitor script execution (VBScript, PowerShell)
+- Alert on abnormal DNS requests
+- Restrict SMB file share access
+- Enable endpoint detection (EDR)
+- Regular backups to mitigate ransomware impact
 
 ## 🏆 Score Summary
 
