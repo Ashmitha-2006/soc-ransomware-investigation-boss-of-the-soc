@@ -56,7 +56,7 @@ Alice begins a full **SIEM-based forensic investigation** using Splunk to recons
 
 ### All Hosts Discovered in the Environment
 
-![Hosts Overview](screenshots/hosts_overview.png)
+![Hosts Overview](hosts_overview.png)
 
 > Running `index=botsv1 | stats count by host` reveals every asset logging to Splunk — a critical first step in any SIEM investigation to understand the full environment scope.
 
@@ -111,8 +111,8 @@ Filtered all Splunk events by the known hostname `we8105desk` and grouped result
 
 | Screenshot | Description |
 |-----------|-------------|
-| ![Q1 Methodology](screenshots/q1_methodology.png) | `src_ip` stats showing `192.168.250.100` dominating with 23,929 events |
-| ![Q1 Answer](screenshots/q1_answer.png) | BOTS #200 — Confirmed correct (100/100 pts) |
+| ![Q1 Methodology](q1_methodology.png) | `src_ip` stats showing `192.168.250.100` dominating with 23,929 events |
+| ![Q1 Answer](q1_answer.png) | BOTS #200 — Confirmed correct (100/100 pts) |
 
 ---
 
@@ -132,8 +132,8 @@ Filtered Suricata IDS logs to only traffic originating from Bob's infected machi
 
 | Screenshot | Description |
 |-----------|-------------|
-| ![Q2 Methodology](screenshots/q2_methodology.png) | Three Cerber signatures sorted by count — `2816763` at count=1 |
-| ![Q2 Answer](screenshots/q2_answer.png) | BOTS #201 — Confirmed correct (100/100 pts) |
+| ![Q2 Methodology](q2_methodology.png) | Three Cerber signatures sorted by count — `2816763` at count=1 |
+| ![Q2 Answer](q2_answer.png) | BOTS #201 — Confirmed correct (100/100 pts) |
 
 ---
 
@@ -155,8 +155,8 @@ Cerber's final action after encrypting all files is to resolve a DNS name for th
 
 | Screenshot | Description |
 |-----------|-------------|
-| ![Q3 Methodology](screenshots/q3_methodology.png) | `stream:dns` filtered for `*.win` — domain appears at `17:15:12` |
-| ![Q3 Answer](screenshots/q3_answer.png) | BOTS #202 — Confirmed correct (485/500 pts) |
+| ![Q3 Methodology](q3_methodology.png) | `stream:dns` filtered for `*.win` — domain appears at `17:15:12` |
+| ![Q3 Answer](q3_answer.png) | BOTS #202 — Confirmed correct (485/500 pts) |
 
 ---
 
@@ -186,8 +186,8 @@ Everything before `16:48:12` was standard OS background noise. `solidaritedeprox
 
 | Screenshot | Description |
 |-----------|-------------|
-| ![Q4 Methodology](screenshots/q4_methodology.png) | DNS timeline — normal traffic then `solidaritedeproximite.org` at `16:48:12` |
-| ![Q4 Answer](screenshots/q4_answer.png) | BOTS #203 — Confirmed correct (970/1000 pts) |
+| ![Q4 Methodology](q4_methodology.png) | DNS timeline — normal traffic then `solidaritedeproximite.org` at `16:48:12` |
+| ![Q4 Answer](q4_answer.png) | BOTS #203 — Confirmed correct (970/1000 pts) |
 
 ---
 
@@ -209,8 +209,8 @@ Sysmon **Event ID 1** (Process Creation) logs the full `CommandLine` field — w
 
 | Screenshot | Description |
 |-----------|-------------|
-| ![Q5 Methodology](screenshots/q5_methodology.png) | `len(CommandLine) = 4490` — full obfuscated VBScript content visible |
-| ![Q5 Answer](screenshots/q5_answer.png) | BOTS #204 — Confirmed correct (965/1000 pts) |
+| ![Q5 Methodology](q5_methodology.png) | `len(CommandLine) = 4490` — full obfuscated VBScript content visible |
+| ![Q5 Answer](q5_answer.png) | BOTS #204 — Confirmed correct (965/1000 pts) |
 
 ---
 
@@ -230,8 +230,8 @@ Windows automatically logs USB device insertions in the Registry under `HKLM\SYS
 
 | Screenshot | Description |
 |-----------|-------------|
-| ![Q6 Methodology](screenshots/q6_methodology.png) | WinRegistry USBSTOR keys — `MIRANDA_PRI` confirmed at `16:42:17` |
-| ![Q6 Answer](screenshots/q6_answer.png) | BOTS #205 — Confirmed correct (900/1000 pts) |
+| ![Q6 Methodology](q6_methodology.png) | WinRegistry USBSTOR keys — `MIRANDA_PRI` confirmed at `16:42:17` |
+| ![Q6 Answer](q6_answer.png) | BOTS #205 — Confirmed correct (900/1000 pts) |
 
 ---
 
@@ -252,8 +252,8 @@ Sysmon **EventCode 3** (Network Connection) captures all outbound network connec
 
 | Screenshot | Description |
 |-----------|-------------|
-| ![Q7 Methodology](screenshots/q7_methodology.png) | Sysmon EventCode=3, Port 445 → `WE9041SRV` at `192.168.250.20` |
-| ![Q7 Answer](screenshots/q7_answer.png) | BOTS #206 — Confirmed correct |
+| ![Q7 Methodology](q7_methodology.png) | Sysmon EventCode=3, Port 445 → `WE9041SRV` at `192.168.250.20` |
+| ![Q7 Answer](q7_answer.png) | BOTS #206 — Confirmed correct |
 
 ---
 
@@ -273,7 +273,7 @@ Windows Security **EventCode 5145** ("A network share object was accessed") is l
 
 > ⚠️ **Key Insight:** Using SMB sourcetype (`sourcetype="stream:smb"`) was a red herring — Windows Security logs on the **server** are the correct and more granular data source for this question.
 
-![Q8 Answer](screenshots/q8_answer.png)
+![Q8 Answer](q8_answer.png)
 
 ---
 
@@ -303,8 +303,8 @@ Searched for all Sysmon process creation events referencing `121214.tmp` and dis
 
 | Screenshot | Description |
 |-----------|-------------|
-| ![Q9 Methodology](screenshots/q9_methodology.png) | Full process chain — WScript (3968) → cmd (1476) → 121214.tmp (2948) |
-| ![Q9 Answer](screenshots/q9_answer.png) | BOTS #208 — Confirmed correct |
+| ![Q9 Methodology](q9_methodology.png) | Full process chain — WScript (3968) → cmd (1476) → 121214.tmp (2948) |
+| ![Q9 Answer](q9_answer.png) | BOTS #208 — Confirmed correct |
 
 ---
 
@@ -325,8 +325,8 @@ Sysmon **EventCode 2** (File Creation Time Changed) is the definitive forensic i
 
 | Screenshot | Description |
 |-----------|-------------|
-| ![Q10 Methodology](screenshots/q10_methodology.png) | Sysmon EventCode=2 + `*bob.smith*` + `*.txt` → `dc() = 406` |
-| ![Q10 Answer](screenshots/q10_answer.png) | BOTS #209 — Confirmed correct (380/500 pts) |
+| ![Q10 Methodology](q10_methodology.png) | Sysmon EventCode=2 + `*bob.smith*` + `*.txt` → `dc() = 406` |
+| ![Q10 Answer](q10_answer.png) | BOTS #209 — Confirmed correct (380/500 pts) |
 
 ---
 
@@ -346,8 +346,8 @@ Examined all HTTP GET requests from Bob's machine — the method used to downloa
 
 | Screenshot | Description |
 |-----------|-------------|
-| ![Q11 Methodology](screenshots/q11_methodology.png) | HTTP GET log — `/mhtr.jpg` anomalous among Windows Update traffic |
-| ![Q11 Answer](screenshots/q11_answer.png) | BOTS #210 — Confirmed correct |
+| ![Q11 Methodology](q11_methodology.png) | HTTP GET log — `/mhtr.jpg` anomalous among Windows Update traffic |
+| ![Q11 Answer](q11_answer.png) | BOTS #210 — Confirmed correct |
 
 ---
 
@@ -358,7 +358,7 @@ Examined all HTTP GET requests from Bob's machine — the method used to downloa
 **Methodology:**
 No Splunk search required — this is an applied forensics concepts question. The Cerber cryptor was delivered inside `mhtr.jpg`, a file that appears to be a standard JPEG image to any casual inspection or file extension filter. **Steganography** is the practice of concealing executable code or data within innocent-looking carrier files — images, audio files, PDFs, or documents. This technique is specifically designed to bypass security controls that block `.exe` or script file downloads while permitting image transfers. The `.jpg` extension also avoids triggering AV signatures that scan for known malicious file types.
 
-![Q12 Answer](screenshots/q12_answer.png)
+![Q12 Answer](q12_answer.png)
 
 ---
 
